@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    android:background="@drawable/background"
     tools:context=".MainActivity">
 
     <android.support.v7.widget.GridLayout
@@ -113,7 +113,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="151dp"
         android:layout_marginLeft="151dp"
-        android:layout_marginTop="7dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="151dp"
         android:layout_marginRight="151dp"
         android:text="TextView"
@@ -139,6 +139,23 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/winnerTextView" />
+
+    <Button
+        android:id="@+id/difrentPartyButton"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="11dp"
+        android:onClick="restartWithDifferentParty"
+        android:text="Ponovo izaberi stranke"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gridLayout" />
 
 
 </android.support.constraint.ConstraintLayout>

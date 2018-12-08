@@ -1,8 +1,11 @@
 package com.example.ahmed.xo;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.annotation.DrawableRes;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -11,23 +14,30 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.File;
+
 public class MainActivity extends AppCompatActivity {
 
     // 0=green player, 1=red player, 2=empty
 
     Button playAgainButton;
+    Button difrentPartyButton;
     TextView winnerTextView;
     android.support.v7.widget.GridLayout gridLayout;
     ImageView counter;
 
+    String pl1;
+    String pl2;
+    String winner = "";
 
     int activePlayer = 0;
     boolean gameActive = true;
     int[] gameState = {2, 2, 2, 2, 2, 2, 2, 2, 2};
-
+    int tieCounter=0;
     int[][] winningPositions = {{0, 1, 2}, {3, 4, 5}, {6, 7, 8}, {0, 3, 6}, {1, 4, 7}, {2, 5, 8}, {0, 4, 8}, {2, 4, 6}};
 
     /*Biranje stranke*/
+
 
 
 
@@ -41,18 +51,57 @@ public class MainActivity extends AppCompatActivity {
 
             gameState[tappedCounter] = activePlayer;
 
+            tieCounter++;
+
             counter.setTranslationY(-1500);
 
             if (activePlayer == 0) {
 
-
-                counter.setImageResource(R.drawable.green);
+                switch (pl1){
+                    case "sda":
+                        counter.setImageResource(R.drawable.sda);
+                        break;
+                    case "sdp":
+                        counter.setImageResource(R.drawable.sdp);
+                        break;
+                    case "snsd":
+                        counter.setImageResource(R.drawable.snsd);
+                        break;
+                    case "hdz":
+                        counter.setImageResource(R.drawable.hdz);
+                        break;
+                    case "sbb":
+                        counter.setImageResource(R.drawable.sbb);
+                        break;
+                    case "nasastranka":
+                        counter.setImageResource(R.drawable.nasastrankaa);
+                        break;
+                }
 
                 activePlayer = 1;
 
             } else {
 
-                counter.setImageResource(R.drawable.red);
+                switch (pl2){
+                    case "sda":
+                        counter.setImageResource(R.drawable.sda);
+                        break;
+                    case "sdp":
+                        counter.setImageResource(R.drawable.sdp);
+                        break;
+                    case "snsd":
+                        counter.setImageResource(R.drawable.snsd);
+                        break;
+                    case "hdz":
+                        counter.setImageResource(R.drawable.hdz);
+                        break;
+                    case "sbb":
+                        counter.setImageResource(R.drawable.sbb);
+                        break;
+                    case "nasastranka":
+                        counter.setImageResource(R.drawable.nasastrankaa);
+                        break;
+                }
 
                 activePlayer = 0;
             }
@@ -61,17 +110,16 @@ public class MainActivity extends AppCompatActivity {
 
                 if (gameState[winningPosition[0]] == gameState[winningPosition[1]] && gameState[winningPosition[1]] == gameState[winningPosition[2]] && gameState[winningPosition[0]] != 2) {
 
-                    String winner = "";
 
                     gameActive = false;
 
                     if (activePlayer == 1) {
 
-                        winner = "SDA";
+                        winner = pl1.toUpperCase();
 
                     } else {
 
-                        winner = "SDP";
+                        winner = pl2.toUpperCase();
                     }
 
 
@@ -80,15 +128,28 @@ public class MainActivity extends AppCompatActivity {
                     playAgainButton.setVisibility(View.VISIBLE);
 
                     winnerTextView.setVisibility(View.VISIBLE);
+
+                    difrentPartyButton.setVisibility(View.VISIBLE);
+
+                } else if(tieCounter==9 && winner == "") {
+
+                    winnerTextView.setText("Nerijeseno je.");
+
+                    playAgainButton.setVisibility(View.VISIBLE);
+
+                    winnerTextView.setVisibility(View.VISIBLE);
+
+                    difrentPartyButton.setVisibility(View.VISIBLE);
+
                 }
             }
 
-
-            counter.animate().translationYBy(1500).setDuration(400);
+            counter.animate().translationYBy(1500).rotation(360).setDuration(500);
         }
     }
 
 
+    /*Play again button method*/
 
     public void playAgain(View view) {
 
@@ -112,7 +173,27 @@ public class MainActivity extends AppCompatActivity {
 
         activePlayer = 0;
 
+        tieCounter = 0;
+
         gameActive = true;
+
+        winner = "";
+
+        difrentPartyButton.setVisibility(View.INVISIBLE);
+    }
+
+
+    /*Restart with different parties button method */
+
+    public void restartWithDifferentParty (View view){
+
+        pl1="";
+        pl2="";
+
+        finish();
+
+
+
     }
 
 
@@ -126,6 +207,19 @@ public class MainActivity extends AppCompatActivity {
         playAgainButton = (Button) findViewById(R.id.playAgainButton);
         winnerTextView = (TextView) findViewById(R.id.winnerTextView);
         gridLayout = (android.support.v7.widget.GridLayout) findViewById(R.id.gridLayout);
+        difrentPartyButton = (Button) findViewById(R.id.difrentPartyButton);
+
+
+        Intent intent = getIntent();
+
+        getSupportActionBar().hide();
+
+        pl1 = intent.getStringExtra("Player1");
+        pl2 = intent.getStringExtra("Player2");
+
+        playAgainButton.setVisibility(View.INVISIBLE);
+        difrentPartyButton.setVisibility(View.INVISIBLE);
+
 
 
     }

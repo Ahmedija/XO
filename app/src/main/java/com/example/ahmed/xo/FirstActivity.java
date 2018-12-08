@@ -10,64 +10,87 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class FirstActivity extends AppCompatActivity {
-    private Button button;
+
 
     ImageView selectedParty;
 
-    int player1=0;
-    int player2=0;
+    public String selectedStranka = "";
+    public String player1="";
+    public String player2="";
 
     ImageView playerSelection;
 
 
 
     int [] tags = {10, 11, 12, 13, 14, 15};
+    ImageView sda;
+    ImageView hdz;
+    ImageView sbb;
+    ImageView nasaStranka;
+    ImageView sdp;
+    ImageView snsd;
 
     public void tappedParty(View view){
 
         selectedParty = (ImageView) view;
 
+        selectedParty.setVisibility(View.GONE);
 
 
-        int selectedStranka = Integer.parseInt((String) selectedParty.getTag());
+        String selectedStranka = (String) selectedParty.getTag();
 
-        if (player1 == 0){
+
+        if (player1 == ""){
 
             player1=selectedStranka;
 
-        }else if (player2 ==0){
+            Toast.makeText(this, "Prvi igrac je izabrao " + selectedStranka.toUpperCase(), Toast.LENGTH_SHORT).show();
+
+        }else if (player2 ==""){
 
             player2 = selectedStranka;
+
+            Toast.makeText(this,"Drugi igrac je izabrao " +  selectedStranka.toUpperCase(), Toast.LENGTH_SHORT).show();
+
             Intent intent = new Intent(this, MainActivity.class);
+            intent.putExtra("Player1", player1);
+            intent.putExtra("Player2", player2);
             startActivity(intent);
         }
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
 
+        selectedStranka = "";
+        player1 = "";
+        player2 = "";
 
-
-
-
+        sda.setVisibility(View.VISIBLE);
+        hdz.setVisibility(View.VISIBLE);
+        sbb.setVisibility(View.VISIBLE);
+        nasaStranka.setVisibility(View.VISIBLE);
+        sdp.setVisibility(View.VISIBLE);
+        snsd.setVisibility(View.VISIBLE);
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        getSupportActionBar().hide();
+
         setContentView(R.layout.activity_first);
 
-        ImageView sda = findViewById(R.id.imageView10);
-        ImageView hdz = findViewById(R.id.imageView11);
-        ImageView sbb = findViewById(R.id.imageView12);
-        ImageView nasaStranka = findViewById(R.id.imageView13);
-        ImageView sdp = findViewById(R.id.imageView14);
-        ImageView snsd = findViewById(R.id.imageView15);
 
-        button = (Button) findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openActivity2();
-            }
-        });
+        sda = findViewById(R.id.imageView10);
+        hdz = findViewById(R.id.imageView11);
+        sbb = findViewById(R.id.imageView12);
+        nasaStranka = findViewById(R.id.imageView13);
+        sdp = findViewById(R.id.imageView14);
+        snsd = findViewById(R.id.imageView15);
+
     }
 
     public void openActivity2(){
