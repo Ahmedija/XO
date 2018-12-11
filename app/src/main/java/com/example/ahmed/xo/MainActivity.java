@@ -76,6 +76,24 @@ public class MainActivity extends AppCompatActivity {
                     case "nasastranka":
                         counter.setImageResource(R.drawable.nasastrankaa);
                         break;
+                    case "demokratskafronta":
+                        counter.setImageResource(R.drawable.demokratskafronta);
+                        break;
+                    case "hdz1990":
+                        counter.setImageResource(R.drawable.hdz1990);
+                        break;
+                    case "platformazaprogres":
+                        counter.setImageResource(R.drawable.platformazaprogres);
+                        break;
+                    case "sds":
+                        counter.setImageResource(R.drawable.sds);
+                        break;
+                    case "sp":
+                        counter.setImageResource(R.drawable.sp);
+                        break;
+                    case "za":
+                        counter.setImageResource(R.drawable.za);
+                        break;
                 }
 
                 activePlayer = 1;
@@ -100,6 +118,24 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case "nasastranka":
                         counter.setImageResource(R.drawable.nasastrankaa);
+                        break;
+                    case "demokratskafronta":
+                        counter.setImageResource(R.drawable.demokratskafronta);
+                        break;
+                    case "hdz1990":
+                        counter.setImageResource(R.drawable.hdz1990);
+                        break;
+                    case "platformazaprogres":
+                        counter.setImageResource(R.drawable.platformazaprogres);
+                        break;
+                    case "sds":
+                        counter.setImageResource(R.drawable.sds);
+                        break;
+                    case "sp":
+                        counter.setImageResource(R.drawable.sp);
+                        break;
+                    case "za":
+                        counter.setImageResource(R.drawable.za);
                         break;
                 }
 

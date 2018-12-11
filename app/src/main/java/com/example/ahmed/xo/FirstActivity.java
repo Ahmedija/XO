@@ -22,13 +22,19 @@ public class FirstActivity extends AppCompatActivity {
 
 
 
-    int [] tags = {10, 11, 12, 13, 14, 15};
+    int [] tags = {10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21};
     ImageView sda;
     ImageView hdz;
     ImageView sbb;
     ImageView nasaStranka;
     ImageView sdp;
     ImageView snsd;
+    ImageView demokratskafronta;
+    ImageView hdz1990;
+    ImageView platformazaprogres;
+    ImageView sds;
+    ImageView sp;
+    ImageView za;
 
     public void tappedParty(View view){
 
@@ -73,6 +79,12 @@ public class FirstActivity extends AppCompatActivity {
         nasaStranka.setVisibility(View.VISIBLE);
         sdp.setVisibility(View.VISIBLE);
         snsd.setVisibility(View.VISIBLE);
+        demokratskafronta.setVisibility(View.VISIBLE);
+        hdz1990.setVisibility(View.VISIBLE);
+        platformazaprogres.setVisibility(View.VISIBLE);
+        sds.setVisibility(View.VISIBLE);
+        sp.setVisibility(View.VISIBLE);
+        za.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -90,6 +102,14 @@ public class FirstActivity extends AppCompatActivity {
         nasaStranka = findViewById(R.id.imageView13);
         sdp = findViewById(R.id.imageView14);
         snsd = findViewById(R.id.imageView15);
+        demokratskafronta = findViewById(R.id.imageView16);
+        hdz1990 = findViewById(R.id.imageView17);
+        platformazaprogres = findViewById(R.id.imageView18);
+        sds = findViewById(R.id.imageView19);
+        sp = findViewById(R.id.imageView20);
+        za = findViewById(R.id.imageView21);
+
+
 
     }
 
